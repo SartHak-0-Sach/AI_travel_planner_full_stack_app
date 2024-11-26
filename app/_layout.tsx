@@ -1,25 +1,44 @@
-import { Stack } from "expo-router";
-import {useFonts} from "expo-font";
+import { Stack } from "expo-router"; 
+// Importing Stack component from expo-router for setting up navigation stack
 
-export default function RootLayout() {
+import { useFonts } from "expo-font"; 
+// Importing useFonts hook from expo-font to handle custom font loading
 
-  useFonts({
-    'roboto':require('./../assets/fonts/Roboto-Regular.ttf'),
-    'roboto-medium':require('./../assets/fonts/Roboto-Medium.ttf'),
-    'roboto-bold':require('./../assets/fonts/Roboto-Bold.ttf')
-  })
+const RootLayout = () => { 
+  // Defining RootLayout as a functional component
+
+  useFonts({ 
+    // Applying useFonts hook to load custom fonts
+
+    'roboto-regular': require('./../assets/fonts/Roboto-Regular.ttf'), 
+    // Loading Roboto Regular font
+
+    'roboto-medium': require('./../assets/fonts/Roboto-Medium.ttf'), 
+    // Loading Roboto Medium font
+
+    'roboto-bold': require('./../assets/fonts/Roboto-Bold.ttf') 
+    // Loading Roboto Bold font
+  });
+
   return (
-    <Stack screenOptions={{headerShown:false}}>
+    <Stack screenOptions={{ headerMode: 'screen', gestureEnabled: false }}> 
+      {/* Setting Stack screen options to not show header and disable gestures */}
 
+      {/* 
+      <Stack screenOptions={{
+        headerShown: false
+      }}>
+        <Stack.Screen name="index" />
+      </Stack> 
+      */}
+      {/* Commented out Stack configuration for index screen */}
 
-    {/*<Stack screenOptions={{
-      headerShown:false
-    }}>
-      <Stack.Screen name="index" />
-    </Stack>*/}
-    
-    <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="(tabs)" /> 
+      {/* Defining Stack screen named "(tabs)" for tab-based navigation */}
       
     </Stack>
   );
 }
+
+export default RootLayout; 
+// Exporting RootLayout component as default export
